@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <title>{$pageTitle}</title>
         <link rel="stylesheet" href="{$templateWebPath}css/main.css" type="text/css">
-        <script src="../../www/js/jquery-3.1.1.js" type="text/javascript"></script>
-        <script src="../../www/js/main.js" type="text/javascript"></script>
+        <script src="../../js/jquery-3.1.1.js" type="text/javascript"></script>
+        <script src="../../js/main.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="header">

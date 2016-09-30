@@ -17,7 +17,7 @@ include_once '../models/ProductsModel.php';
  */
 function addtocartAction() {
     $itemId = isset($_GET['id']) ? intval($_GET['id']) : NULL;
-    d($itemId);
+//    d($itemId);
     if (!$itemId) {
         return FALSE;
     }

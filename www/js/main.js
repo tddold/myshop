@@ -7,7 +7,7 @@
 function addToCart(itemId) {
     console.log('js-addToCart()');
     $.ajax({
-        metod: 'POST',
+        type: 'POST',
         async: false,
         url: "/cart/addtocart/" + itemId + '/',
         dataType: 'json',
