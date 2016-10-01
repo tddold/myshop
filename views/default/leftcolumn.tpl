@@ -15,7 +15,7 @@
     </div>
 
     <div class="menuCaption">Количка</div>
-    <a hret="/cart/" title="Add to cat">В количкат</a>
+    <a href="/cart/" title="Add to cat">Количество</a>
     <span id="cartCntItems">
         {if $cartCntItems > 0}
             {$cartCntItems}

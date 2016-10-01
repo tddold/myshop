@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-09-29 23:57:31
+/* Smarty version 3.1.30, created on 2016-10-01 11:26:10
   from "D:\xampp\htdocs\myshop\views\default\leftcolumn.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_57ed8e4b481747_23671802',
+  'unifunc' => 'content_57ef81323b2d80_61703888',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7ff32f39ddca4197d29693a75d8196953f0351d3' => 
     array (
       0 => 'D:\\xampp\\htdocs\\myshop\\views\\default\\leftcolumn.tpl',
-      1 => 1475185619,
+      1 => 1475313929,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_57ed8e4b481747_23671802 (Smarty_Internal_Template $_smarty_tpl) {
+function content_57ef81323b2d80_61703888 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div id="leftCulumn">
     <div id="leftMenu">
@@ -61,7 +61,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
     </div>
 
     <div class="menuCaption">Количка</div>
-    <a hret="/cart/" title="Add to cat">В количкат</a>
+    <a href="/cart/" title="Add to cat">Количество</a>
     <span id="cartCntItems">
         <?php if ($_smarty_tpl->tpl_vars['cartCntItems']->value > 0) {?>
             <?php echo $_smarty_tpl->tpl_vars['cartCntItems']->value;?>

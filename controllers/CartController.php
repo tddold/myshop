@@ -23,15 +23,41 @@ function addtocartAction() {
     }
 
     $resData = array();
-    
+
     // if value null - add value
     if (isset($_SESSION['cart']) && array_search($itemId, $_SESSION['cart']) === FALSE) {
         $_SESSION['cart'][] = $itemId;
         $resData['cntItems'] = count($_SESSION['cart']);
         $resData['success'] = 1;
-    } else{
+    } else {
         $resData['success'] = 0;
     }
-    
+//    d(json_encode($resData));
+    echo json_encode($resData);
+}
+
+/**
+ * Function remove products from cart
+ * 
+ * @param integer $itemId ID product
+ * @return arrya update info for number products in cart
+ */
+function removefromcartAction() {
+    $itemId = isset($_GET['id']) ? intval($_GET['id']) : NULL;
+    if (!$itemId) {
+        exit();
+    }
+
+    $resData = array();
+
+    $key = array_search($itemId, $_SESSION['cart']);
+    if ($key !== FALSE) {
+        unset($_SESSION['cart'][$key]);
+        $resData['success'] = 1;
+        $resData['cntItems'] = count($_SESSION['cart']);
+    } else {
+        $resData['duccess'] = 0;
+    }
+
     echo json_encode($resData);
 }

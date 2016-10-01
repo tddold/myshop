@@ -22,4 +22,22 @@ function addToCart(itemId) {
     });
 }
 
+function removeFromCart(itemId) {
+    console.log("js-rmoveFromCart(" + itemId + ")");
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/cart/removefromCart/" + itemId + '/',
+        dataType: 'json',
+        success: function (data) {
+            if (data) {
+
+                $('#cartCntItems').html('cntItems');
+
+                $('#addCart_' + itemId).show();
+                $('#removeCart_' + itemId).hide();
+            }
+        }
+    });
+}
 
