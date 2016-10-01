@@ -6,6 +6,5 @@
 Цена: {$rsProduct[0]['price']}
 <br/>
 
-<a id="addCart_{$rsProduct[0]['id']}" href="#" onClick="addToCart({$rsProduct[0]['id']});
-        return false;" alt='Add to cart'>Add to cart</a>
+<a id="addCart_{$rsProduct[0]['id']}" href="#" onClick="addToCart({$rsProduct[0]['id']}); return false;" alt='Add to cart'>Add to cart</a>
 <p>Описание: <br />{$rsProduct[0]['description']}</p>

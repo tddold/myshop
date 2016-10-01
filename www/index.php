@@ -11,7 +11,7 @@ if (!isset($_SESSION['cart'])) {
 include_once'../config/config.php'; // init setings
 include_once'../config/db.php';     // init base data
 include_once '../library/mineFunctions.php';    // Some function
-// initialize controller
+// initialize controllers
 $controllerName = isset($_GET['controller']) ? ucfirst($_GET['controller']) : 'Index';
 
 // initiliaze function
