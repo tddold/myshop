@@ -22,12 +22,18 @@ function addToCart(itemId) {
     });
 }
 
+/**
+ * Remove product from cart
+ * 
+ * @param {imteger} itemId ID product
+ * @returns {undefined} update data in cart
+ */
 function removeFromCart(itemId) {
-    console.log("js-rmoveFromCart(" + itemId + ")");
+    console.log("js-removeFromCart(" + itemId + ")");
     $.ajax({
         type: 'POST',
         async: false,
-        url: "/cart/removefromCart/" + itemId + '/',
+        url: "/cart/removefromcart/" + itemId + '/',
         dataType: 'json',
         success: function (data) {
             if (data) {
@@ -41,3 +47,14 @@ function removeFromCart(itemId) {
     });
 }
 
+function conversionPrise(itemId) {
+    var newCnt,
+            itemPrice,
+            itemRealPrice;
+
+    newCnt = $('#itemCnt_' + itemId).val();
+    itemPrice = $('#itemPrice_' + itemId).attr('value');
+    itemRealPrice = newCnt * itemPrice;
+
+    $('#itemRealPrice_' + itemId).html(itemRealPrice);
+}

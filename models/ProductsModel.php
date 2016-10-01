@@ -59,3 +59,20 @@ function getProductById($itemId) {
 
     return mysqli_fetch_all($rs, MYSQLI_ASSOC);
 }
+
+/**
+ * Get array products fron array indexes (ID's)
+ * 
+ * @param array $itemsIds array indexes prducts
+ * @return array array data producs
+ */
+function getProductFromArray($itemsIds) {
+    $strIds = implode($itemsIds, ', ');
+    $sql = "SELECT * FROM products WHERE id in ({$strIds})";
+
+    include '../config/db.php';
+    $rs = mysqli_query($link, $sql);
+    mysqli_close($link);
+
+    return createSnartyRsArray($rs);
+}

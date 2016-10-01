@@ -14,13 +14,13 @@
         {/foreach}
     </div>
 
-    <div class="menuCaption">Количка</div>
+    <div class="menuCaption">Кошница</div>
     <a href="/cart/" title="Add to cat">Количество</a>
     <span id="cartCntItems">
         {if $cartCntItems > 0}
             {$cartCntItems}
         {else}
-            празно
+            0
         {/if}
     </span>
 

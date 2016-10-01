@@ -12,7 +12,7 @@ $dbuser = "root";
 $dbpasswd = "";
 
 
-global $link;
+//global $link;
 $link = mysqli_connect($dblocation, $dbuser, $dbpasswd, $dbname);
 
 

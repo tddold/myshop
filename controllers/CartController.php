@@ -33,6 +33,7 @@ function addtocartAction() {
         $resData['success'] = 0;
     }
 //    d(json_encode($resData));
+//    var_dump(json_encode($resData));
     echo json_encode($resData);
 }
 
@@ -59,5 +60,27 @@ function removefromcartAction() {
         $resData['duccess'] = 0;
     }
 
+//     d(json_encode($resData));
+//    var_dump(json_encode($resData));
     echo json_encode($resData);
+}
+
+/**
+ * Create pag cart
+ * 
+ * @link /cart/
+ */
+function indexAction($smarty) {
+    $itemsIds = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+
+    $rsCategories = getAllMainCatsWithChildren();
+    $rsProducts = getProductFromArray($itemsIds);
+        
+    $smarty->assign('pageTitle', '');
+    $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsProducts', $rsProducts);
+
+    loadTemplate($smarty, 'header');
+    loadTemplate($smarty, 'cart');
+    loadTemplate($smarty, 'footer');
 }
