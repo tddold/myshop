@@ -75,7 +75,7 @@ function indexAction($smarty) {
 
     $rsCategories = getAllMainCatsWithChildren();
     $rsProducts = getProductFromArray($itemsIds);
-    
+
     $smarty->assign('pageTitle', '');
     $smarty->assign('rsCategories', $rsCategories);
     $smarty->assign('rsProducts', $rsProducts);
@@ -83,4 +83,32 @@ function indexAction($smarty) {
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'cart');
     loadTemplate($smarty, 'footer');
+}
+
+/**
+ * Create order page
+ * 
+ * 
+ */
+function orderAction($smarty) {
+
+    // get array id products (ID)
+    $itemIds = isset($_SESSION['cart']) ? $_SESSION['cart'] : NULL;
+
+    if (!$itemIds) {
+        redirect('/cart/');
+        return;
+    }
+
+    $itemCnt = array();
+    foreach ($itemIds as $item) {
+
+        // create araay post key
+        $postVar = 'itemCnt_' . $item;
+
+        $itemCnt[$item] = isset($_POST[$postVar]) ? $_POST[$postVar] : NULL;
+    }
+
+    // get array products from cart
+    $rsProducts = getProductFromArray($itemIds);
 }

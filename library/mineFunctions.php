@@ -68,6 +68,6 @@ function redirect($url) {
         $url = '/';
     }
 
-    header("Location: '{$url}'");
+    header("Location: {$url}");
     exit;
 }

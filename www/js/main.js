@@ -186,3 +186,44 @@ function showRegisterBox() {
         $('#registerBoxHidden').hide();
     }
 }
+
+/**
+ * Update user data
+ * 
+ * 
+ */
+function updateUserData() {
+    console.log('js - updateUserData()');
+
+    var phone = $('#newPhone').val(),
+            adress = $('#newAdress').val(),
+            pwd1 = $('#newPwd1').val(),
+            pwd2 = $('#newPwd2').val(),
+            curPwd = $('#curPwd').val(),
+            name = $('#newName').val();
+
+    var postData = {
+        phone: phone,
+        adress: adress,
+        pwd1: pwd1,
+        pwd2: pwd2,
+        curPwd: curPwd,
+        name: name
+    };
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/user/update/",
+        data: postData,
+        dataType: 'json',
+        success: function (data) {
+            if (data['success']) {
+                $('#userLink').html(data['userName']);
+                alert(data['message']);
+            } else {
+                alert(data['message']);
+            }
+        }
+    });
+}
