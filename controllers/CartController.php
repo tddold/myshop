@@ -107,8 +107,48 @@ function orderAction($smarty) {
         $postVar = 'itemCnt_' . $item;
 
         $itemCnt[$item] = isset($_POST[$postVar]) ? $_POST[$postVar] : NULL;
+
+//        if (isset($_POST[$postVar])) {
+//             $itemCnt[$item] = $_POST[$postVar];
+//        } else {
+//              $itemCnt[$item] = NULL;
+//        }
     }
 
     // get array products from cart
     $rsProducts = getProductFromArray($itemIds);
+
+    $i = 0;
+    foreach ($rsProducts as &$item) {
+        $item['cnt'] = isset($itemCnt[$item['id']]) ? $itemCnt[$item['id']] : 0;
+        if ($item['cnt']) {
+            $item['realPrice'] = $item['cnt'] * $item['price'];
+        } else {
+            unset($rsProducts[$i]);
+        }
+
+        $i++;
+    }
+
+    if (!$rsProducts) {
+        echo 'Cart is empty';
+        return;
+    }
+
+    $_SESSION['saleCart'] = $rsProducts;
+
+    $rsCategories = getAllMainCatsWithChildren();
+
+    if (!isset($_SESSION['user'])) {
+        $smarty->assign('hideLoginBox', 1);
+    }
+
+
+    $smarty->assign('pageTitle', 'Поръчка');
+    $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsProducts', $rsProducts);
+
+    loadTemplate($smarty, 'header');
+    loadTemplate($smarty, 'order');
+    loadTemplate($smarty, 'footer');
 }

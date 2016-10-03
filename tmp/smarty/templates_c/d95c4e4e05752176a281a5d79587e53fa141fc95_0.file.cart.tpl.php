@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-03 17:21:22
+/* Smarty version 3.1.30, created on 2016-10-03 23:57:25
   from "D:\xampp\htdocs\myshop\views\default\cart.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_57f277726d4391_89749586',
+  'unifunc' => 'content_57f2d445043a54_55955797',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd95c4e4e05752176a281a5d79587e53fa141fc95' => 
     array (
       0 => 'D:\\xampp\\htdocs\\myshop\\views\\default\\cart.tpl',
-      1 => 1475508078,
+      1 => 1475531836,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_57f277726d4391_89749586 (Smarty_Internal_Template $_smarty_tpl) {
+function content_57f2d445043a54_55955797 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 
@@ -60,7 +60,7 @@ $_smarty_tpl->tpl_vars['__smarty_foreach_products']->value['iteration']++;
 </a>
                     </td>
                     <td>
-                        <input name="itemCn_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+                        <input name="itemCnt_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " id="itemCnt_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " type="text" value="1" onchange="conversionPrise(<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 );"/>

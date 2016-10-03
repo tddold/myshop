@@ -26,7 +26,7 @@
                         <a href='/product/{$item['id']}/'>{$item['name']}</a>
                     </td>
                     <td>
-                        <input name="itemCn_{$item['id']}" id="itemCnt_{$item['id']}" type="text" value="1" onchange="conversionPrise({$item['id']});"/>
+                        <input name="itemCnt_{$item['id']}" id="itemCnt_{$item['id']}" type="text" value="1" onchange="conversionPrise({$item['id']});"/>
                     </td>
                     <td>
                         <span id="itemPrice_{$item['id']}" value="{$item['price']}">
