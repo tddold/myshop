@@ -18,6 +18,11 @@ $controllerName = isset($_GET['controller']) ? ucfirst($_GET['controller']) : 'I
 // initiliaze function
 $actionName = isset($_GET['action']) ? $_GET['action'] : 'index';
 
+// if in session have data of user - show user or error
+if(isset($_SESSION['user'])){
+    $smarty->assign('arUser', $_SESSION['user']);
+}
+
 // initialize variable to $smarty - value elements in cart
 $smarty->assign('cartCntItems', count($_SESSION['cart']));
 

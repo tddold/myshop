@@ -22,7 +22,7 @@ function indexAction($smarty) {
     }
     // get data for products
     $rsProduct = getProductById($itemId);
-//d($rsProduct);
+    
     // get data for category
     $rsCategories = getAllMainCatsWithChildren();
 
@@ -34,7 +34,7 @@ function indexAction($smarty) {
     $smarty->assign('pageTitle', '');
     $smarty->assign('rsCategories', $rsCategories);
     $smarty->assign('rsProduct', $rsProduct);
-//d($smarty);
+    
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'product');
     loadTemplate($smarty, 'footer');

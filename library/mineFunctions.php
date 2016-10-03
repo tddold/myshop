@@ -43,7 +43,7 @@ function d($value = null, $die = 1) {
  * @return array
  */
 function createSnartyRsArray($rs) {
-   
+
     if (!$rs) {
         return FALSE;
     }
@@ -53,6 +53,21 @@ function createSnartyRsArray($rs) {
 
         $smartyRs[] = $row;
     }
-    
+
     return $smartyRs;
+}
+
+/**
+ * Redurect
+ * 
+ * @param string $url
+ */
+function redirect($url) {
+
+    if (!$url) {
+        $url = '/';
+    }
+
+    header("Location: '{$url}'");
+    exit;
 }

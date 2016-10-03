@@ -75,7 +75,7 @@ function indexAction($smarty) {
 
     $rsCategories = getAllMainCatsWithChildren();
     $rsProducts = getProductFromArray($itemsIds);
-        
+    
     $smarty->assign('pageTitle', '');
     $smarty->assign('rsCategories', $rsCategories);
     $smarty->assign('rsProducts', $rsProducts);
