@@ -43,6 +43,10 @@ body {
     font-weight: bold;
 }
 
+.menuCaption a{
+        text-decoration: none;
+}
+
 .cartBox {
     padding: 5px 0px 5px 0px;
 }

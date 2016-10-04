@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-03 03:07:41
+/* Smarty version 3.1.30, created on 2016-10-04 10:04:49
   from "D:\xampp\htdocs\myshop\views\default\leftcolumn.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_57f1af5d9c2411_60849432',
+  'unifunc' => 'content_57f362a1014b89_09691762',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7ff32f39ddca4197d29693a75d8196953f0351d3' => 
     array (
       0 => 'D:\\xampp\\htdocs\\myshop\\views\\default\\leftcolumn.tpl',
-      1 => 1475456857,
+      1 => 1475568284,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_57f1af5d9c2411_60849432 (Smarty_Internal_Template $_smarty_tpl) {
+function content_57f362a1014b89_09691762 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div id="leftCulumn">
     <div id="leftMenu">
-        <div class="menuCaption">Меню:</div>
+        <div class="menuCaption"><a href="/"<h2>Меню</h2></a>:</div>
         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['rsCategories']->value, 'item');
 if ($_from !== null) {
@@ -74,26 +74,28 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
             <a href="#" onclick="logout();">Изход</a>
         </div>
 
-        <div id="loginBox">
-            <div class="menuCaption">Вход</div>
-            <input type="text" id="loginEmail" name="loginEmail" value=""/><br/>
-            <input type="password" id="loginPwd" name="loginPwd" value=""/><br/>
-            <input type="button" onclick="login();" value="Вход"/><br/>
+        <?php if (!isset($_smarty_tpl->tpl_vars['hideLoginBox']->value)) {?>
+            <div id="loginBox">
+                <div class="menuCaption">Вход</div>
+                <input type="text" id="loginEmail" name="loginEmail" value=""/><br/>
+                <input type="password" id="loginPwd" name="loginPwd" value=""/><br/>
+                <input type="button" onclick="login();" value="Вход"/><br/>
 
-        </div>
-
-        <div id="registerBox">
-            <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
-            <div id="registerBoxHidden">
-                email:<br/>
-                <input type="text" id="email" name="email" value=""/><br/>
-                парола:<br/>
-                <input type="password" id="pwd1" name="pwd1" value=""/><br/>
-                певтори парола:<br/>
-                <input type="password" id="pwd2" name="pwd2" value="" /><br/>
-                <input type="button" onclick="registerNewUser();" value="Регистрирай се!"/>            
             </div>
-        </div>
+
+            <div id="registerBox">
+                <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
+                <div id="registerBoxHidden">
+                    email:<br/>
+                    <input type="text" id="email" name="email" value=""/><br/>
+                    парола:<br/>
+                    <input type="password" id="pwd1" name="pwd1" value=""/><br/>
+                    певтори парола:<br/>
+                    <input type="password" id="pwd2" name="pwd2" value="" /><br/>
+                    <input type="button" onclick="registerNewUser();" value="Регистрирай се!"/>            
+                </div>
+            </div>
+        <?php }?>
     <?php }?>
 
     <div class="menuCaption">Кошница</div>

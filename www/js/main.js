@@ -171,6 +171,14 @@ function login() {
                 $('#userLink').attr('href', '/user/');
                 $('#userLink').html(data['displayName']);
                 $('#userBox').show();
+
+                //> fill fild in page order
+                $('#name').val(data['name']);
+                $('#phone').val(data['phone']);
+                $('#adress').val(data['adress']);
+                //<
+
+                $('#btnSaveOrder').show();
             } else {
                 alert(data['message']);
 
@@ -221,6 +229,30 @@ function updateUserData() {
             if (data['success']) {
                 $('#userLink').html(data['userName']);
                 alert(data['message']);
+            } else {
+                alert(data['message']);
+            }
+        }
+    });
+}
+
+/**
+ * Save order
+ * 
+ */
+function saveOrder() {
+    var postData = getData('form');
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/cart/saveorder/",
+        data: postData,
+        dataType: 'json',
+        success: function (data) {
+            if (data) {
+                alert(data['message']);
+                document.location = '/';
             } else {
                 alert(data['message']);
             }

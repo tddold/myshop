@@ -8,6 +8,8 @@
 // import models
 include_once '../models/CategoriesModel.php';
 include_once '../models/ProductsModel.php';
+include_once '../models/OrdersModel.php';
+include_once '../models/PurchaseModel.php';
 
 /**
  * Add products to cart
@@ -151,4 +153,42 @@ function orderAction($smarty) {
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'order');
     loadTemplate($smarty, 'footer');
+}
+
+/**
+ * AJAX function save order
+ * 
+ * @param array $_SESSION['saleCart'] array sales procucts
+ * @return json information of result action
+ */
+function saveorderAction() {
+
+    // array sales products
+    $cart = isset($_SESSION['saleCart']) ? $_SESSION['saleCart'] : null;
+
+    // if order empty 
+    if (!$cart) {
+        $resData['success'] = 0;
+        $resData['message'] = 'Not product for order';
+
+        echo json_encode($resData);
+        return;
+    }
+
+    $name = isset($_POST['name']) ? $_POST['name'] : NULL;
+    $phone = isset($_POST['phone']) ? $_POST['phone'] : NULL;
+    $adress = isset($_POST['adress']) ? $_POST['adress'] : NULL;
+
+    // if name, phone, adress is empty 
+    if (!$name || !$phone || !$adress) {
+        $resData['success'] = 0;
+        $resData['message'] = 'Not name or phone or adress';
+
+        echo json_encode($resData);
+        return;
+    }
+
+    // create new query and get them ID
+    $orderId = makeNewOrder($name, $phone, $adress);
+    d($orderId);
 }

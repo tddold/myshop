@@ -99,7 +99,7 @@
             <input type="text" id="email" name="email" value=""/><br/>
             парола*:<br/>
             <input type="password" id="pwd1" name="pwd1" value=""/><br/>
-            певтори парола*:<br/>
+            повтори парола*:<br/>
             <input type="password" id="pwd2" name="pwd2" value="" /><br/>
 
             Име* :<input type="text" id="name" name="name" value=""/><br/>

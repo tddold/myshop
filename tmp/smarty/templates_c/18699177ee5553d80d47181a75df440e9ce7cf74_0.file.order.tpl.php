@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-04 00:03:27
+/* Smarty version 3.1.30, created on 2016-10-04 09:26:24
   from "D:\xampp\htdocs\myshop\views\default\order.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_57f2d5af54cb35_38956849',
+  'unifunc' => 'content_57f359a063a4f9_20518341',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '18699177ee5553d80d47181a75df440e9ce7cf74' => 
     array (
       0 => 'D:\\xampp\\htdocs\\myshop\\views\\default\\order.tpl',
-      1 => 1475532196,
+      1 => 1475565971,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_57f2d5af54cb35_38956849 (Smarty_Internal_Template $_smarty_tpl) {
+function content_57f359a063a4f9_20518341 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 
@@ -158,7 +158,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
             <input type="text" id="email" name="email" value=""/><br/>
             парола*:<br/>
             <input type="password" id="pwd1" name="pwd1" value=""/><br/>
-            певтори парола*:<br/>
+            повтори парола*:<br/>
             <input type="password" id="pwd2" name="pwd2" value="" /><br/>
 
             Име* :<input type="text" id="name" name="name" value=""/><br/>
