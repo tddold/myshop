@@ -6,11 +6,15 @@ define('PathPostfix', 'Controller.php');
 
 // Templates
 $template = 'default';
+$templateAdmin = 'admin';
+
 
 define('TemplatePrefix', "../views/{$template}/");
+define('TemplateAdminPrefix', "../views/{$templateAdmin}/");
 define('TemplatePostfix', '.tpl');
 
 define('TemplateWebPath', "../../templates/{$template}/");
+define('TemplateAdminWebPath', "../../templates/{$templateAdmin}/");
 
 // Initialize Smarty
 require('../library/Smarty/libs/Smarty.class.php');

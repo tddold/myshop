@@ -79,12 +79,13 @@ function getOrderWithProductsByUser($userId) {
     $rs = mysqli_query($link, $sql);
     mysqli_close($link);
 
+    $smartyRs = array();
     while ($row = $rs->fetch_assoc()) {
         $rsChildren = getPurchaseForOrder($row['id']);
 
         if ($rsChildren) {
             $row['children'] = $rsChildren;
-            $smartyRs[] = $row;
+           $smartyRs [] = $row;
         }
     }
 

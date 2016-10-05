@@ -41,6 +41,7 @@ function getPurchaseForOrder($orderId) {
             . "JOIN products as `ps` ON `pe` .product_id = `ps` .id "
             . "WHERE `pe` .order_id = {$orderId}";
 
+//    d($sql);
     include '../config/db.php';
     $rs = mysqli_query($link, $sql);
 

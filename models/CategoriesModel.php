@@ -65,7 +65,53 @@ function gerCatById($catId) {
     include '../config/db.php';
 
     $rs = mysqli_query($link, $sql);
-     mysqli_close($link);
+    mysqli_close($link);
 
     return mysqli_fetch_assoc($rs);
+}
+
+/**
+ * Get all parent categories
+ * 
+ * @return array categories
+ */
+function getAllMainCategories() {
+
+    $sql = "SELECT * "
+            . "FROM categories "
+            . "WHERE parent_id = 0";
+
+    include '../config/db.php';
+
+    $rs = mysqli_query($link, $sql);
+    mysqli_close($link);
+
+    return createSnartyRsArray($rs);
+}
+
+/**
+ * Add new category
+ * 
+ * @param string $catName name category
+ * @param integer $catParentId ID parent category
+ * @return integer id new category
+ */
+function insertCat($catName, $catParentId = 0) {
+
+    // create query
+    $sql = "INSERT INTO "
+            . "categories (`parent_id`, `name`) "
+            . "VALUES ('{$catParentId}', '{$catName}')";
+
+    include '../config/db.php';
+
+    // action query
+    mysqli_query($link, $sql);
+
+    // return id added category
+    $id = mysqli_insert_id($link);
+
+    mysqli_close($link);
+    
+    return $id;
 }
