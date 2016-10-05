@@ -190,5 +190,30 @@ function saveorderAction() {
 
     // create new query and get them ID
     $orderId = makeNewOrder($name, $phone, $adress);
-    d($orderId);
+
+
+    // if orderId = false return error and break
+    if (!$orderId) {
+        $resData['success'] = 0;
+        $resData['message'] = 'Грешка при създаване на заявката';
+
+        echo json_encode($resData);
+        return;
+    }
+
+    // save product for created order
+    $res = setPurchaseForOrder($orderId, $cart);
+
+    // if success - create respons and del variable cart
+    if ($res) {
+        $resData['success'] = 1;
+        $resData['message'] = 'Поръчката е записана';
+        unset($_SESSION['saleCart']);
+        unset($_SESSION['cart']);
+    } else {
+        $resData['success'] = 0;
+        $resData['message'] = 'Грешка при записа на заявкат N: ' . $orderId;
+    }
+
+    echo json_encode($resData);
 }

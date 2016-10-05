@@ -178,3 +178,15 @@ function updateUserData($name, $phone, $adress, $pwd1, $pwd2, $curPwd) {
 
     return $rs;
 }
+
+/**
+ * Get data of orders current user
+ * 
+ * @return array orders with link to products
+ */
+function gerCurUserOrders() {
+    $userId = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : 0;
+    $rs = getOrderWithProductsByUser($userId);
+
+    return $rs;
+}

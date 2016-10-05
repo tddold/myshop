@@ -8,6 +8,8 @@
 // import models
 include_once '../models/CategoriesModel.php';
 include_once '../models/UsersModel.php';
+include_once '../models/OrdersModel.php';
+include_once '../models/PurchaseModel.php';
 
 /**
  * AJAX register users
@@ -72,8 +74,8 @@ function logoutAction() {
 
     $resData['success'] = 1;
 
-    echo json_encode($resData);
     redirect('/');
+    echo json_encode($resData);
 }
 
 /**
@@ -122,8 +124,13 @@ function indexAction($smarty) {
     // get array with categories
     $rsCategories = getAllMainCatsWithChildren();
 
+    // get array of order users
+    $rsUserOrders = gerCurUserOrders();
+
     $smarty->assign('pageTitle', '');
     $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsUserOrders', $rsUserOrders);
+
 
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'user');
@@ -170,17 +177,17 @@ function updateAction() {
         $_SESSION['user']['name'] = $name;
         $_SESSION['user']['phone'] = $phone;
         $_SESSION['user']['adress'] = $adress;
-        
+
         $newPwd = $_SESSION['user']['pwd'];
-        if($pwd1 && ($pwd1 == $pwd2)){
+        if ($pwd1 && ($pwd1 == $pwd2)) {
             $newPwd = md5(trim($pwd1));
         }
         $_SESSION['user']['pwd'] = $newPwd;
         $_SESSION['user']['displayName'] != $name ? $name : $_SESSION['user']['email'];
-    } else{
+    } else {
         $resData['success'] = 0;
         $resData['message'] = 'Грешка при обновяване на данните';
     }
-    
+
     echo json_encode($resData);
 }

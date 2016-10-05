@@ -62,3 +62,31 @@ function makeNewOrder($name, $phone, $adress) {
 
     return FALSE;
 }
+
+/**
+ * Get array orders with link to products for user $userId
+ * 
+ * @param integer $userId ID user
+ * @return array array orders with link products
+ */
+function getOrderWithProductsByUser($userId) {
+    $userId = intval($userId);
+    $sql = "SELECT * FROM orders "
+            . "WHERE `user_id` = '{$userId}' "
+            . " ORDER BY id DESC";
+
+    include '../config/db.php';
+    $rs = mysqli_query($link, $sql);
+    mysqli_close($link);
+
+    while ($row = $rs->fetch_assoc()) {
+        $rsChildren = getPurchaseForOrder($row['id']);
+
+        if ($rsChildren) {
+            $row['children'] = $rsChildren;
+            $smartyRs[] = $row;
+        }
+    }
+
+    return $smartyRs;
+}

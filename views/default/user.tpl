@@ -35,3 +35,57 @@
         <td><input type="button" id="newPwd2" value="Запамети промените" onclick="updateUserData();"/></td>
     </tr>
 </table>
+
+<h2>Поръчки</h2>
+{if ! $rsUserOrders}
+    Няма поръчки
+{else}
+    <table>
+        <tr>
+            <th>N:</th>
+            <th>Действие</th>
+            <th>ID на поръчката</th>
+            <th>Статус</th>
+            <th>Дата на създаване</th>
+            <th>Дата на плащане</th>
+            <th>Допълнителна информация</th>
+        </tr>
+        {foreach $rsUserOrders as $item name=order}
+            <tr>
+                <td>{$smarty.foreach.order.iteration}</td>
+                <td><a href="#" onclick="showProducts('{$item['id']}');
+                        return false;"/></a>Показва продукта в заявката</td>
+                <td>{$item['id']}</td>
+                <td>{$item['status']}</td>
+                <td>{$item['date_created']}</td>
+                <td>{$item['date_payment']}&nbsp;</td>
+                <td>{$item['comment']}</td>
+            </tr>
+
+            <tr class="hideme" id="purchasesForOrderId_{$item['id'}">
+                <td colspan="7">
+                    {if $item['children']}
+                        <table border='1' cellpadding='1' cellspacing='1' width='100%'>
+                            <tr>
+                                <th>N:</th>
+                                <th>ID</th>                            
+                                <td>Название</td>
+                                <td>Цена</td>
+                                <td>Количество</td>
+                            </tr>
+                            {foreach $item['children'] as $itemChild name=products}
+                                <tr>
+                                    <td>{$smarty.foreach.products.iteration}</td>                                
+                                    <td>{$itemChild['id']}</td>
+                                    <td><a href="/product/{$itemChild['id']}/"/>{$itemChild['name']}</td>
+                                    <td>{$itemChild['price']}</td>
+                                    <td>{$itemChild['amount']}</td>
+                                </tr>
+                            {/foreach}
+                        </table>
+                    {/if}
+                </td>
+            </tr>
+        {/foreach}
+    </table>
+{/if}

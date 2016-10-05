@@ -110,10 +110,10 @@ function registerNewUser() {
                 $('#userBox').show();
                 //<
 
-//                //> block login
-//                $('#loginBox').hide();
-//                $('#btnSaveOrder').show();
-//                //<
+                //> page otder - block login
+                $('#loginBox').hide();
+                $('#btnSaveOrder').show();
+                //<
             } else {
                 alert(data['message']);
             }
@@ -258,4 +258,14 @@ function saveOrder() {
             }
         }
     });
+}
+
+function showProducts(id) {
+    var objName = "#purchasesForOrderId" + id;
+
+    if ($(objName).css('display') != 'table-row') {
+        $(objName).show();
+    } else {
+        $(objName).hide();
+    }
 }
