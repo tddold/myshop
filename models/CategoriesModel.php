@@ -112,6 +112,61 @@ function insertCat($catName, $catParentId = 0) {
     $id = mysqli_insert_id($link);
 
     mysqli_close($link);
-    
+
     return $id;
+}
+
+/**
+ * 
+ * 
+ * @return type
+ */
+function getAllCategories() {
+
+    $sql = "SELECT * "
+            . "FROM categories "
+            . "ORDER BY parent_id ASC";
+
+    include '../config/db.php';
+
+    $rs = mysqli_query($link, $sql);
+
+    mysqli_close($link);
+
+    return createSnartyRsArray($rs);
+}
+
+/**
+ * Update categories
+ * 
+ * @param integer $itemId ID category
+ * @param integer $parentId ID parent category
+ * @param string $newName new name category
+ * @return type
+ */
+function updateCategoryData($itemId, $parentId = -1, $newName = '') {
+
+    $set = array();
+
+    if ($newName) {
+        $set[] = "`name` = '{$newName}'";
+    }
+
+    if ($parentId > -1) {
+        $set[] = "'parent_id' = '{$parentId}'";
+    }
+
+    $setStr = implode($set, ', ');
+
+    $sql = "UPDATE categories "
+            . "SET {$setStr} "
+            . "WHERE id = '{$itemId}'";
+
+    include '../config/db.php';
+
+    $rs = mysqli_query($link, $sql);
+
+    mysqli_close($link);
+
+    return $rs;
 }

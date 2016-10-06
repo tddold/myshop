@@ -46,3 +46,41 @@ function addnewcatAction() {
     echo json_encode($resData);
     return;
 }
+
+/**
+ * Page admin category
+ * 
+ * @param type $smarty
+ */
+function categoryAction($smarty) {
+    $rsCategories = getAllCategories();
+    $rsMainCategories = getAllMainCategories();
+
+    $smarty->assign('pageTitle', 'Admin site');
+    $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsMainCategories', $rsMainCategories);
+
+    loadTemplate($smarty, 'adminHeader');
+    loadTemplate($smarty, 'adminCategory');
+    loadTemplate($smarty, 'adminFooter');
+}
+
+function updatecategoryAction() {
+
+    $itemId = $_POST['itemId'];
+    $parentId = $_POST['parentId'];
+    $newName = $_POST['newName'];
+
+    $res = updateCategoryData($itemId, $parentId, $newName);
+
+    if ($res) {
+        $resData['success'] = 1;
+        $resData['message'] = 'Категорията е обновена';
+    } else {
+        $resData['success'] = 0;
+        $resData['message'] = 'Грешка при промяна на данните на категорията';
+    }
+
+    echo json_encode($resData);
+    return;
+}
