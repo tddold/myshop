@@ -153,7 +153,7 @@ function updateCategoryData($itemId, $parentId = -1, $newName = '') {
     }
 
     if ($parentId > -1) {
-        $set[] = "'parent_id' = '{$parentId}'";
+        $set[] = "`parent_id` = '{$parentId}'";
     }
 
     $setStr = implode($set, ', ');

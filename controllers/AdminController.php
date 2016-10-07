@@ -84,3 +84,41 @@ function updatecategoryAction() {
     echo json_encode($resData);
     return;
 }
+
+/**
+ * Page controll products
+ * 
+ * @param type $smarty
+ */
+function productsAction($smarty) {
+    $rsCategories = getAllCategories();
+    $rsProducts = getProducts();
+
+    $smarty->assign('pageTitle', 'Admin site');
+    $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsProducts', $rsProducts);
+
+    loadTemplate($smarty, 'adminHeader');
+    loadTemplate($smarty, 'adminProducts');
+    loadTemplate($smarty, 'adminFooter');
+}
+
+function addproductAction() {
+    $itemName = $_POST['itemName'];
+    $itemPrice = $_POST['itemPrice'];
+    $itemDesc = $_POST['itemDesc'];
+    $itemCat = $_POST['itemCatId'];
+
+    $res = insertProduct($itemName, $itemPrice, $itemDesc, $itemCat);
+
+    if ($res) {
+        $resData['success'] = 1;
+        $resData['message'] = 'Промените са успешно записани';
+    } else {
+        $resData['success'] = 0;
+        $resData['message'] = 'Грешка при промяна на данните';
+    }
+
+    echo json_encode($resData);
+    return;
+}

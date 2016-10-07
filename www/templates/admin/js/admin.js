@@ -59,3 +59,35 @@ function updateCat(itemId) {
         }
     });
 }
+
+
+
+function addProduct() {
+    var itemName = $('#newItemName').val(),
+            itemPrice = $('#newItemPrice').val(),
+            itemCatId = $('#newItemCatId').val(),
+            itemDesc = $('#newItemDesc').val(),
+            postData = {
+                itemName: itemName,
+                itemPrice: itemPrice,
+                itemCatId: itemCatId,
+                itemDesc: itemDesc
+            };
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/admin/addproduct/",
+        data: postData,
+        dataType: 'json',
+        success: function (data) {
+            alert(data['message']);
+            if (data['success']) {
+                $('#newItemName').val('');
+                $('#newItemPrice').val('');
+                $('#newItemCatId').val('');
+                $('#newItemDesc').val('');
+            }
+        }
+    });
+}

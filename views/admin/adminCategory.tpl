@@ -1,5 +1,5 @@
 <h2>Категории</h2>
-<table>
+<table border="1" cellpadding="1" cellspasing="1">
     <tr>
         <th>N:</th>
         <th>ID</th>

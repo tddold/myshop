@@ -74,3 +74,41 @@ function getProductFromArray($itemsIds) {
 
     return createSnartyRsArray($rs);
 }
+
+function getProducts() {
+
+    $sql = "SELECT * "
+            . "FROM `products` "
+            . "ORDER BY category_id";
+
+    include '../config/db.php';
+    $rs = mysqli_query($link, $sql);
+    mysqli_close($link);
+
+    return createSnartyRsArray($rs);
+}
+
+/**
+ * Insert new product
+ * 
+ * @param string $itemName name product
+ * @param integer $itemPrice price
+ * @param string $itemDesc description
+ * @param integer $itemCat ID category
+ * @return type
+ */
+function insertProduct($itemName, $itemPrice, $itemDesc, $itemCat) {
+
+    $sql = "INSERT INTO products "
+            . "SET "
+            . "`name` = '{$itemName}', "
+            . "`price` = '{$itemPrice}', "
+            . "`description` = '{$itemDesc}', "
+            . "`category_id` = '{$itemCat}'";
+
+    include '../config/db.php';
+    $rs = mysqli_query($link, $sql);
+    mysqli_close($link);
+
+    return $rs;
+}

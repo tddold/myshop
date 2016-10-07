@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-06 17:58:28
+/* Smarty version 3.1.30, created on 2016-10-07 13:49:49
   from "D:\xampp\htdocs\myshop\views\admin\adminCategory.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_57f674a4971628_86523246',
+  'unifunc' => 'content_57f78bdd599669_44220858',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e8c1241383485f171f828be1d4d60655920b1cb3' => 
     array (
       0 => 'D:\\xampp\\htdocs\\myshop\\views\\admin\\adminCategory.tpl',
-      1 => 1475769504,
+      1 => 1475840985,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_57f674a4971628_86523246 (Smarty_Internal_Template $_smarty_tpl) {
+function content_57f78bdd599669_44220858 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <h2>Категории</h2>
-<table>
+<table border="1" cellpadding="1" cellspasing="1">
     <tr>
         <th>N:</th>
         <th>ID</th>
