@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-07 17:43:46
+/* Smarty version 3.1.30, created on 2016-10-07 23:57:39
   from "D:\xampp\htdocs\myshop\views\admin\adminProducts.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_57f7c2b259e8c4_56001756',
+  'unifunc' => 'content_57f81a53024812_43653090',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '01b71184c34bd692d0715b92f641434462cc48d0' => 
     array (
       0 => 'D:\\xampp\\htdocs\\myshop\\views\\admin\\adminProducts.tpl',
-      1 => 1475855024,
+      1 => 1475877439,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_57f7c2b259e8c4_56001756 (Smarty_Internal_Template $_smarty_tpl) {
+function content_57f81a53024812_43653090 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <h2>Продукти</h2>
 
@@ -98,17 +98,17 @@ $_smarty_tpl->tpl_vars['__smarty_foreach_products']->value['iteration']++;
 </td>
             <td>
                 <input type="edit" id="itemName_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-}" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['name'];?>
+" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['name'];?>
 "/>
             </td>
             <td>
                 <input type="edit" id="itemPrice_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-}" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['price'];?>
+" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['price'];?>
 "/>
             </td>
             <td>
-                <select id="itemCnt_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-}">
+                <select id="itemCatId_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+">
                     <option value="0">Главна категория</option>
                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['rsCategories']->value, 'itemCat');
@@ -130,21 +130,22 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
             </td>
             <td>
                 <textarea id="itemDesc_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-}">
+">
                     <?php echo $_smarty_tpl->tpl_vars['item']->value['description'];?>
 
                 </textarea>
             </td>
             <td>
                 <input type="checkbox" id="itemStatus_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-}" <?php if ($_smarty_tpl->tpl_vars['item']->value['status'] == 0) {?>checked="checked"<?php }?>/>            </td>
+" <?php if ($_smarty_tpl->tpl_vars['item']->value['status'] == 0) {?>checked<?php }?>/> 
+            </td>
             <td>
                 <?php if ($_smarty_tpl->tpl_vars['item']->value['image']) {?>
                     <img src='/images/products/<?php echo $_smarty_tpl->tpl_vars['item']->value['image'];?>
 ' width="100"/>
                 <?php }?>
                 <form action="/admin/upload/" method="POST" enctype="multipart/form-data">
-                    <input type="file" name="filename" value="Избор"/><br/> 
+                    <input type="file" name="filename"/><br/> 
                     <input type="hidden" name="itemId" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 "/><br/>
                     <input type="submit" value="Качване"/><br/>

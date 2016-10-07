@@ -53,13 +53,13 @@
             <td>{$smarty.foreach.products.iteration}</td>
             <td>{$item['id']}</td>
             <td>
-                <input type="edit" id="itemName_{$item['id']}}" value="{$item['name']}"/>
+                <input type="edit" id="itemName_{$item['id']}" value="{$item['name']}"/>
             </td>
             <td>
-                <input type="edit" id="itemPrice_{$item['id']}}" value="{$item['price']}"/>
+                <input type="edit" id="itemPrice_{$item['id']}" value="{$item['price']}"/>
             </td>
             <td>
-                <select id="itemCnt_{$item['id']}}">
+                <select id="itemCatId_{$item['id']}">
                     <option value="0">Главна категория</option>
                     {foreach $rsCategories as $itemCat}
                         <option value="{$itemCat['id']}" {if $item['category_id'] == $itemCat['id']}selected{/if}>{$itemCat['name']}</option>
@@ -69,12 +69,13 @@
                 </select>
             </td>
             <td>
-                <textarea id="itemDesc_{$item['id']}}">
+                <textarea id="itemDesc_{$item['id']}">
                     {$item['description']}
                 </textarea>
             </td>
             <td>
-                <input type="checkbox" id="itemStatus_{$item['id']}}" {if $item['status'] == 0}checked="checked"{/if}/>            </td>
+                <input type="checkbox" id="itemStatus_{$item['id']}" {if $item['status'] == 0}checked{/if}/> 
+            </td>
             <td>
                 {if $item['image']}
                     <img src='/images/products/{$item['image']}' width="100"/>

@@ -91,3 +91,38 @@ function addProduct() {
         }
     });
 }
+
+
+function updateProduct(itemId) {
+    var itemName = $('#itemName_' + itemId).val(),
+            itemPrice = $('#itemPrice_' + itemId).val(),
+            itemCatId = $('#itemCatId_' + itemId).val(),
+            itemDesc = $('#itemDesc_' + itemId).val(),
+            itemStatus = $('#itemStatus_' + itemId).attr('checked');
+
+    if (!itemStatus) {
+        itemStatus = 1;
+    } else {
+        itemStatus = 0;
+    }
+
+    var postData = {
+        itemId: itemId,
+        itemName: itemName,
+        itemPrice: itemPrice,
+        itemCatId: itemCatId,
+        itemDesc: itemDesc,
+        itemStatus: itemStatus
+    };
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/admin/updateproduct/",
+        data: postData,
+        dataType: 'json',
+        success: function (data) {
+            alert(data['message']);
+        }
+    });
+}

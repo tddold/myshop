@@ -122,3 +122,25 @@ function addproductAction() {
     echo json_encode($resData);
     return;
 }
+
+function updateproductAction() {
+    $itemId = $_POST['itemId'];
+    $itemName = $_POST['itemName'];
+    $itemPrice = $_POST['itemPrice'];
+    $itemStatus = $_POST['itemStatus'];
+    $itemDesc = $_POST['itemDesc'];
+    $itemCat = $_POST['itemCatId'];
+
+    $res = updateProduct($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $itemCat);
+
+    if ($res) {
+        $resData['success'] = 1;
+        $resData['message'] = 'Промените са успешно записани(ъпдейт)';
+    } else {
+        $resData['success'] = 0;
+        $resData['message'] = 'Грешка при упдейт на данните';
+    }
+
+    echo json_encode($resData);
+    return;
+}
