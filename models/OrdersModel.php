@@ -85,9 +85,52 @@ function getOrderWithProductsByUser($userId) {
 
         if ($rsChildren) {
             $row['children'] = $rsChildren;
-           $smartyRs [] = $row;
+            $smartyRs [] = $row;
         }
     }
 
     return $smartyRs;
+}
+
+function getOrders() {
+    $sql = "SELECT o.*, u.name, u.email, u.phone, u.adress "
+            . "FROM orders AS `o` "
+            . "LEFT JOIN users AS `u` ON o.user_id = u.id "
+            . "ORDER BY id DESC";
+    
+    include '../config/db.php';
+    $rs = mysqli_query($link, $sql);
+    mysqli_close($link);
+
+    $smartyRs = array();
+    while ($row = $rs->fetch_assoc()) {
+        $rsChildren = getProductsForOrder($row['id']);
+     
+        if ($rsChildren) {
+            $row['children'] = $rsChildren;
+            $smartyRs [] = $row;
+        }
+    }
+
+    return $smartyRs;
+}
+
+/**
+ * Get products from orders
+ * 
+ * @param integer $orderId ID order
+ * @return array data orders
+ */
+function getProductsForOrder($orderId) {
+    $sql = "SELECT * "
+            . "FROM purchase AS pe "
+            . "LEFT JOIN products AS ps "
+            . "ON pe.product_id = ps.id "
+            . "WHERE (`order_id` = '{$orderId}')";
+   
+    include '../config/db.php';
+    $rs = mysqli_query($link, $sql);
+    mysqli_close($link);
+    
+    return createSnartyRsArray($rs);
 }

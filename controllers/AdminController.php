@@ -144,3 +144,50 @@ function updateproductAction() {
     echo json_encode($resData);
     return;
 }
+
+function uploadAction() {
+    $maxSize = 2 * 1024 * 1024;
+
+    $itemId = $_POST['itemId'];
+
+    // get ext for upload file
+    $ext = pathinfo($_FILES['filename']['name'], PATHINFO_EXTENSION);
+
+    // create name file
+    $newFileName = $itemId . '.' . $ext;
+
+    $size = $_FILES['filename']['size'];
+
+    if ($size > $maxSize) {
+        echo ("Размера на файла превишава 2MB");
+        return;
+    }
+
+    // select file
+    if (is_uploaded_file($_FILES['filename']['tmp_name'])) {
+
+        // if file is selected - save in temp dir
+        $res = move_uploaded_file($_FILES['filename']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . '/images/products/' . $newFileName);
+
+        if ($res) {
+            $res = updateProductImage($itemId, $newFileName);
+            if ($res) {
+                redirect('/admin/products/');
+            }
+        }
+    } else {
+        echo ("Грешка при качване на файла");
+    }
+}
+
+function ordersAction($smarty) {
+
+    $rsOrders = getOrders();
+    
+    $smarty->assign('pageTitle', 'Orders');
+    $smarty->assign('rsOrders', $rsOrders);
+
+    loadTemplate($smarty, 'adminHeader');
+    loadTemplate($smarty, 'adminOrders');
+    loadTemplate($smarty, 'admin|Footer');
+}

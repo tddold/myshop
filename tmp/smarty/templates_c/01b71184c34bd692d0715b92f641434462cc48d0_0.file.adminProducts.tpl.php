@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-07 23:57:39
+/* Smarty version 3.1.30, created on 2016-10-08 10:24:06
   from "D:\xampp\htdocs\myshop\views\admin\adminProducts.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_57f81a53024812_43653090',
+  'unifunc' => 'content_57f8ad26512cb4_04189342',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '01b71184c34bd692d0715b92f641434462cc48d0' => 
     array (
       0 => 'D:\\xampp\\htdocs\\myshop\\views\\admin\\adminProducts.tpl',
-      1 => 1475877439,
+      1 => 1475914863,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_57f81a53024812_43653090 (Smarty_Internal_Template $_smarty_tpl) {
+function content_57f8ad26512cb4_04189342 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <h2>Продукти</h2>
 
@@ -145,7 +145,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ' width="100"/>
                 <?php }?>
                 <form action="/admin/upload/" method="POST" enctype="multipart/form-data">
-                    <input type="file" name="filename"/><br/> 
+                    <input type="file" name="filename" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['name'];?>
+"/><br/> 
                     <input type="hidden" name="itemId" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 "/><br/>
                     <input type="submit" value="Качване"/><br/>

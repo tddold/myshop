@@ -130,7 +130,7 @@ function updateProduct($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $
     }
 
     if ($itemDesc) {
-        $set[] = "`description` = {'$itemDesc'}";
+        $set[] = "`description` = '{$itemDesc}'";
     }
 
     if ($itemCat) {
@@ -138,7 +138,7 @@ function updateProduct($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $
     }
 
     if ($newFileName) {
-        $set[] = "`image` = {$newFileName}";
+        $set[] = "`image` = '{$newFileName}'";
     }
 
     $setStr = implode($set, ',');
@@ -151,5 +151,12 @@ function updateProduct($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $
     $rs = mysqli_query($link, $sql);
     mysqli_close($link);
 
+    return $rs;
+}
+
+function updateProductImage($itemId, $newFileName) {
+
+    $rs = updateProduct($itemId, NULL, NULL, NULL, NULL, NULL, $newFileName);
+    
     return $rs;
 }

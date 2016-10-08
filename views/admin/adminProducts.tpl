@@ -81,7 +81,7 @@
                     <img src='/images/products/{$item['image']}' width="100"/>
                 {/if}
                 <form action="/admin/upload/" method="POST" enctype="multipart/form-data">
-                    <input type="file" name="filename"/><br/> 
+                    <input type="file" name="filename" value="{$item['name']}"/><br/> 
                     <input type="hidden" name="itemId" value="{$item['id']}"/><br/>
                     <input type="submit" value="Качване"/><br/>
                 </form>
