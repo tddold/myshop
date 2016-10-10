@@ -97,7 +97,7 @@ function getOrders() {
             . "FROM orders AS `o` "
             . "LEFT JOIN users AS `u` ON o.user_id = u.id "
             . "ORDER BY id DESC";
-    
+
     include '../config/db.php';
     $rs = mysqli_query($link, $sql);
     mysqli_close($link);
@@ -105,7 +105,7 @@ function getOrders() {
     $smartyRs = array();
     while ($row = $rs->fetch_assoc()) {
         $rsChildren = getProductsForOrder($row['id']);
-     
+
         if ($rsChildren) {
             $row['children'] = $rsChildren;
             $smartyRs [] = $row;
@@ -127,10 +127,37 @@ function getProductsForOrder($orderId) {
             . "LEFT JOIN products AS ps "
             . "ON pe.product_id = ps.id "
             . "WHERE (`order_id` = '{$orderId}')";
-   
+
     include '../config/db.php';
     $rs = mysqli_query($link, $sql);
     mysqli_close($link);
-    
+
     return createSnartyRsArray($rs);
+}
+
+function updateOrderStatus($itemId, $status) {
+
+    $status = intval($status);
+    $sql = "UPDATE orders "
+            . "SET `status` = '{$status}' "
+            . "WHERE id = '{$itemId}'";
+
+    include '../config/db.php';
+    $rs = mysqli_query($link, $sql);
+    mysqli_close($link);
+
+    return $rs;
+}
+
+function updateOrderDatePayment($itemId, $datePayment) {
+
+    $sql = "UPDATE orders "
+            . "SET `date_payment` = '{$datePayment}' "
+            . "WHERE id = '{$itemId}'";
+
+    include '../config/db.php';
+    $rs = mysqli_query($link, $sql);
+    mysqli_close($link);
+
+    return $rs;
 }

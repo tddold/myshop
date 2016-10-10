@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName admin
+AuthUserFile D:/xampp/htdocs/myshop/pwdaccess
+require valid-user

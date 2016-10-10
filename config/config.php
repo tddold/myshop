@@ -5,7 +5,8 @@ define('PathPrefix', '../controllers/');
 define('PathPostfix', 'Controller.php');
 
 // Templates
-$template = 'default';
+//$template = 'default';
+$template = 'texturia';
 $templateAdmin = 'admin';
 
 

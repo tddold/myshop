@@ -98,9 +98,16 @@ function updateProduct(itemId) {
             itemPrice = $('#itemPrice_' + itemId).val(),
             itemCatId = $('#itemCatId_' + itemId).val(),
             itemDesc = $('#itemDesc_' + itemId).val(),
-            itemStatus = $('#itemStatus_' + itemId).attr('checked');
+            itemStatus;
 
-    if (!itemStatus) {
+//    if (!itemStatus) {
+//        itemStatus = 1;
+//    } else {
+//        itemStatus = 0;
+//    }
+
+    if ($('#itemStatus_' + itemId).is(":checked"))
+    {
         itemStatus = 1;
     } else {
         itemStatus = 0;
@@ -123,6 +130,73 @@ function updateProduct(itemId) {
         dataType: 'json',
         success: function (data) {
             alert(data['message']);
+        }
+    });
+}
+
+function showProducts(id) {
+    var objName = "#purchasesForOrderId_" + id;
+
+    if ($(objName).css('display') !== 'table-row') {
+        $(objName).show();
+    } else {
+        $(objName).hide();
+    }
+}
+
+function updateOrderStatus(itemId) {
+    var htmlId = '#itemStatus_' + itemId,
+            status;
+//
+//    if (!status) {
+//        status = 0;
+//    } else {
+//        status = 1;
+//    }
+
+    if ($(htmlId).is(":checked"))
+    {
+        status = 1;
+    } else {
+        status = 0;
+    }
+
+    var postData = {
+        itemId: itemId,
+        status: status
+    };
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/admin/setorderstatus/",
+        data: postData,
+        dataType: 'json',
+        success: function (data) {
+            if (!data['success']) {
+                alert(data['message']);
+            }
+        }
+    });
+}
+
+function updateDatePayment(itemId) {
+    var datePayment = $('#datePayment_' + itemId).val(),
+            postData = {
+                itemId: itemId,
+                datePayment: datePayment
+            };
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/admin/setorderpayment/",
+        data: postData,
+        dataType: 'json',
+        success: function (data) {
+            if (!data['success']) {
+                alert(data['message']);
+            }
         }
     });
 }

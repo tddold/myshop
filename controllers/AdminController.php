@@ -183,11 +183,45 @@ function uploadAction() {
 function ordersAction($smarty) {
 
     $rsOrders = getOrders();
-    
+
     $smarty->assign('pageTitle', 'Orders');
     $smarty->assign('rsOrders', $rsOrders);
 
     loadTemplate($smarty, 'adminHeader');
     loadTemplate($smarty, 'adminOrders');
-    loadTemplate($smarty, 'admin|Footer');
+    loadTemplate($smarty, 'adminFooter');
+}
+
+function setorderstatusAction() {
+    $itemId = $_POST['itemId'];
+    $status = $_POST['status'];
+
+    $res = updateOrderStatus($itemId, $status);
+
+    if ($res) {
+        $res['success'] = 1;
+    } else {
+        $res['success'] = 0;
+        $res['message'] = 'Грешка при съхранение на статуса';
+    }
+
+    echo json_encode($res);
+    return;
+}
+
+function setorderpaymentAction() {
+    $itemId = $_POST['itemId'];
+    $datePayment = $_POST['datePayment'];
+
+    $res = updateOrderDatePayment($itemId, $datePayment);
+
+    if ($res) {
+        $res['success'] = 1;
+    } else {
+        $res['success'] = 0;
+        $res['message'] = 'Грешка при съхранение на статуса';
+    }
+
+    echo json_encode($res);
+    return;
 }
